@@ -1,57 +1,41 @@
-
-import { BeforeInsert, Column, CreateDateColumn, PrimaryColumn, UpdateDateColumn } from "typeorm";
-import {v4 as uuid} from "uuid";
 import bcrypt from "bcrypt";
-import {
-    Contains,
-    IsInt,
-    Length,
-    IsEmail,
-    IsFQDN,
-    IsDate,
-    Min,
-    Max,
-} from "class-validator"
+import { IsEmail } from "class-validator";
+import { BeforeInsert, Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from "typeorm";
+import { v4 as uuid } from "uuid";
+@Entity()
+class UserApp {
+  @PrimaryColumn()
+  id: string;
 
-class UserApp{
-    @PrimaryColumn()
-    readonly id: string | undefined;
+  @Column()
+  name: string;
 
-    @Column() 
-    name: string;
+  @Column()
+  @IsEmail()
+  email: string;
 
-    @Column() 
-    @IsEmail()
-    email: string;
+  @Column()
+  password: string;
 
-    @Column() 
-    password: string;
+  @CreateDateColumn()
+  createDate: Date;
 
-    @CreateDateColumn()
-    createData: Date;
-  
-    @UpdateDateColumn()
-    updateDate: Date | null;
+  @UpdateDateColumn({nullable: true})
+  updateDate: Date | null;
 
+  constructor() {
+    this.id = uuid();
+    this.name = "";
+    this.email = "";
+    this.password = "";
+    this.createDate = new Date();
+    this.updateDate = null;
+  }
 
-
-
-
-    constructor(){
-        if(!this.id){
-          this.id = uuid();
-        }
-        this.name='';
-        this.email='';
-        this.password='';
-        this.createData=new Date();
-        this.updateDate=null;
-    }
-
-    @BeforeInsert()
-    async hashPassword() {
-        this.password = await bcrypt.hash(this.password, 10);
-    }
+  @BeforeInsert()
+  async hashPassword() {
+    this.password = await bcrypt.hash(this.password, 10);
+  }
 }
 
-export {UserApp};
+export { UserApp };

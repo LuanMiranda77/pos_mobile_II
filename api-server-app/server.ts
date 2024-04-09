@@ -1,29 +1,25 @@
-import express from "express";
+import express, { Router } from "express";
 import { createConnection, getRepository } from "typeorm";
-import { UserApp } from "./src/domain/userApp";
+import { routes } from "./src/routes";
+
+import cors from "cors";
 
 const app = express();
-app.use(express.json);
+
+
+app.use(cors());
+app.use(express.json());
+app.use(routes);
+
 const PORT = 5000;
 
-// const configPath: ConnectionOptions = {
-//   type: "sqlite",
-//   database: "src/database/database.sqlite",
-//   synchronize: true,
-//   logging: false,
-//   entities: [UserApp],
-// };
-
-app.get("/", async (req, res)   => {
-  const data = await getRepository(UserApp)
-    .find()
-  // res.send("Hello, World!");
-  res.send(data)
+app.listen(PORT || 5000, (err: any) => {
+  if (err) {
+    return console.error(err);
+  }
+  console.log("Servidor rodando na porta %d em modo %s", PORT || 5000, app.settings.env);
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
 
 createConnection()
   .then(() => {

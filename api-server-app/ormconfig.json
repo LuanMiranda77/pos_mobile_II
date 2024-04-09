@@ -3,7 +3,7 @@
   "database": "src/database/database.sqlite",
   "migrations": ["src/database/migrations/**/*.ts"],
   "synchronize": true,
-  "logging": false,
+  "logging": true,
   "entities": ["src/domain/**/*.ts"],
   "cli": {
     "migrationsDir": "src/database/migrations",
