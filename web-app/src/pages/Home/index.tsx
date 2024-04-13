@@ -2,6 +2,7 @@ import React from "react";
 import { GiSelfLove } from "react-icons/gi";
 import { IoBookOutline } from "react-icons/io5";
 import { LiaTvSolid } from "react-icons/lia";
+import { Link } from "react-router-dom";
 import boys from "../../../public/boys.svg";
 
 const Home: React.FC = () => {
@@ -19,12 +20,16 @@ const Home: React.FC = () => {
       </div>
       <div className="flex items-center justify-between w-100 sm:p-2 md:p-10 w-full">
         <div className="flex items-center">
-          <button className="flex items-center justify-center mr-4 btn-primary w-36 h-20">
-            <IoBookOutline className="m-1" /> Estudar
-          </button>
-          <button className="flex items-center justify-center btn-secondary w-36 h-20">
-            <LiaTvSolid className="m-1" /> Dar aulas
-          </button>
+          <Link to="/coaches">
+            <button className="flex items-center justify-center mr-4 btn-primary w-36 h-20">
+              <IoBookOutline className="m-1" /> Estudar
+            </button>
+          </Link>
+          <Link to="/cad-coaches">
+            <button className="flex items-center justify-center btn-secondary w-36 h-20">
+              <LiaTvSolid className="m-1" /> Dar aulas
+            </button>
+          </Link>
         </div>
         <div className="flex items-center">
           Total de 285 conexões já realizadas <GiSelfLove className="ml-2" color="orange" />

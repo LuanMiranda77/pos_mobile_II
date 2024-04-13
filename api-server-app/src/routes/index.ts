@@ -18,9 +18,15 @@ routes.get("/users", async (req, res) => {
   const data = await getRepository(UserApp).find();
   res.send(data);
 });
+routes.get("/aulas", async (req, res) => {
+  const data = await getRepository(ClassesSchedule).find();
+  res.send(data);
+});
 
 routes.get("/coaches", async (req, res) => {
-  const data = await getRepository(Coaches).find();
+  const data = await getRepository(Coaches).find({
+    relations: ["classes"],
+  });
   res.send(data);
 });
 

@@ -2,6 +2,7 @@
 import React, { ReactNode, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Coaches from "../pages/Coaches";
+import ListCoaches from "../pages/Coaches/list";
 import Home from "../pages/Home";
 import { Notfound } from "../pages/NotFound";
 
@@ -16,12 +17,17 @@ export const listRoutes = [
   {
     path: "/home",
     title: "Inicio",
-    component: <Home/>,
+    component: <Home />,
+  } as PropsRoute,
+  {
+    path: "/cad-coaches",
+    title: "Cadastro de Professores",
+    component: <Coaches />,
   } as PropsRoute,
   {
     path: "/coaches",
     title: "Lista Professores",
-    component: <Coaches/>,
+    component: <ListCoaches />,
   } as PropsRoute,
 ] as Array<PropsRoute>;
 

@@ -17,10 +17,10 @@
     @apply text-white font-bold px-4 py-2 rounded-lg shadow-md translate-y-0 border-2 border-primary bg-primary duration-500 hover:-translate-y-2 hover:duration-500 hover:shadow-xl;
   }
   .btn-secondary {
-    @apply text-secondary font-bold px-4 py-2 rounded-lg shadow-md translate-y-0 border-2 border-secondary duration-500 hover:-translate-y-2 hover:duration-500 hover:shadow-xl;
+    @apply text-white bg-secondary font-bold px-4 py-2 rounded-lg shadow-md translate-y-0 border-2 border-secondary duration-500 hover:-translate-y-2 hover:duration-500 hover:shadow-xl;
   }
   .btn {
-    @apply  font-bold p-1  translate-y-0 duration-500 hover:-translate-y-1  hover:shadow-xl hover:rounded-lg;
+    @apply  font-bold px-4 py-2  rounded-lg translate-y-0 duration-500 hover:-translate-y-1  hover:shadow-xl hover:rounded-lg;
   }
 
   .btn-menu {
@@ -29,6 +29,10 @@
 
   .input-pattern {
     @apply  font-bold p-1 rounded-md duration-500 border-2 border-white hover:shadow-xl hover:rounded-lg;
+  }
+
+  .card{
+    @apply bg-white p-1 rounded-md border border-[#E6E6F0];
   }
 }
 
